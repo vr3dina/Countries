@@ -1,0 +1,83 @@
+﻿@model Domain.Models.CountryDisplayModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+
+@if (Model == null)
+{
+    <h2>Not found</h2>
+    <a asp-action="Search">Back to search</a>
+}
+else
+{
+
+
+    @using (Html.BeginForm("Save", "Country"))
+    {
+
+        <div>
+            <h4>@Model.Name</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Alpha3Code)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Alpha3Code)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Area)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Area)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Population)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Population)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Capital)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Capital)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Region)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Region)
+                </dd>
+            </dl>
+        </div>
+
+
+        @Html.HiddenFor(model => model.Name)
+        @Html.HiddenFor(model => model.Capital)
+        @Html.HiddenFor(model => model.Alpha3Code)
+        @Html.HiddenFor(model => model.Area)
+        @Html.HiddenFor(model => model.Population)
+        @Html.HiddenFor(model => model.Region)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save to database" class="btn btn-primary" />
+            </div>
+        </div>
+
+
+    }
+}
+<div>
+    <a asp-action="List">Back to List</a>
+</div>
